@@ -9,8 +9,8 @@ create table rsvps (
   postal_code text,
   address text,
   attending boolean not null,
-  guest_count integer default 1,
   dietary_restrictions text,
+  taxi text,
   message text,
   created_at timestamptz default now()
 );

@@ -3,14 +3,18 @@ import { z } from "zod";
 import { getSupabase } from "@/lib/supabase";
 
 interface RsvpFormProps {
+  lang: string;
   labels: {
     rsvpTitle: string;
     rsvpDeadline: string;
     nameLabel: string;
     namePlaceholder: string;
+    nameFuriganaLabel: string;
+    nameFuriganaPlaceholder: string;
     coAttendeesLabel: string;
     coAttendeesNote: string;
     coAttendeePlaceholder: string;
+    coAttendeeFuriganaPlaceholder: string;
     guestSideLabel: string;
     groomGuest: string;
     brideGuest: string;
@@ -29,6 +33,11 @@ interface RsvpFormProps {
     dietaryLabel: string;
     dietaryNote: string;
     dietaryPlaceholder: string;
+    taxiLabel: string;
+    taxiNote: string;
+    taxiNotNeeded: string;
+    taxiOneWay: string;
+    taxiRoundTrip: string;
     messageLabel: string;
     messagePlaceholder: string;
     submit: string;
@@ -54,16 +63,18 @@ const rsvpSchema = z.object({
   postal_code: z.string().optional(),
   address: z.string().optional(),
   attending: z.boolean(),
-  guest_count: z.number().int().min(1).max(10).optional(),
   dietary_restrictions: z.string().optional(),
+  taxi: z.string().optional(),
   message: z.string().optional(),
 });
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
-export default function RsvpForm({ labels }: RsvpFormProps) {
+export default function RsvpForm({ lang, labels }: RsvpFormProps) {
   const [name, setName] = useState("");
+  const [nameFurigana, setNameFurigana] = useState("");
   const [coAttendees, setCoAttendees] = useState(["", "", "", ""]);
+  const [coAttendeesFurigana, setCoAttendeesFurigana] = useState(["", "", "", ""]);
   const [guestSide, setGuestSide] = useState<string | null>(null);
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -72,6 +83,7 @@ export default function RsvpForm({ labels }: RsvpFormProps) {
   const [attending, setAttending] = useState<boolean | null>(null);
   const [guestCount, setGuestCount] = useState(1);
   const [dietary, setDietary] = useState("");
+  const [taxi, setTaxi] = useState<string>("not_needed");
   const [message, setMessage] = useState("");
   const [formState, setFormState] = useState<FormState>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -83,6 +95,7 @@ export default function RsvpForm({ labels }: RsvpFormProps) {
     // Validate
     const validationErrors: Record<string, string> = {};
     if (!name.trim()) validationErrors.name = labels.nameRequired;
+    if (lang === "ja" && !nameFurigana.trim()) validationErrors.name = "フリガナを入力してください。";
     if (attending === null) validationErrors.attending = labels.attendanceRequired;
     if (!phone.trim()) validationErrors.phone = labels.phoneRequired;
     if (!guestSide) validationErrors.guestSide = labels.guestSideRequired;
@@ -92,10 +105,17 @@ export default function RsvpForm({ labels }: RsvpFormProps) {
       return;
     }
 
-    const coAttendeeStr = coAttendees.filter((c) => c.trim()).join(", ");
+    const compiledName = nameFurigana.trim() ? `${name.trim()} (${nameFurigana.trim()})` : name.trim();
+
+    const coAttendeeList = coAttendees.map((c, i) => {
+      const f = coAttendeesFurigana[i]?.trim();
+      return f && c.trim() ? `${c.trim()} (${f})` : c.trim();
+    }).filter(Boolean);
+
+    const coAttendeeStr = coAttendeeList.join(", ");
 
     const data = {
-      name: name.trim(),
+      name: compiledName,
       co_attendees: coAttendeeStr || undefined,
       guest_side: guestSide || undefined,
       phone: phone.trim(),
@@ -105,6 +125,7 @@ export default function RsvpForm({ labels }: RsvpFormProps) {
       attending: attending!,
       guest_count: attending ? guestCount : 1,
       dietary_restrictions: attending ? dietary.trim() || undefined : undefined,
+      taxi: attending && taxi !== 'not_needed' ? taxi : undefined,
       message: message.trim() || undefined,
     };
 
@@ -237,15 +258,31 @@ export default function RsvpForm({ labels }: RsvpFormProps) {
             <div className={fieldLabel}>
               {labels.nameLabel}{requiredBadge}
             </div>
-            <div className="px-6">
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder={labels.namePlaceholder}
-                className={inputClass}
-                required
-              />
+            <div className={`px-6 ${lang === "ja" ? "grid grid-cols-2 gap-4" : ""}`}>
+              <div className="w-full">
+                {lang === "ja" && <p className="text-xs mb-1 opacity-70 text-center">{labels.nameLabel}</p>}
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder={labels.namePlaceholder}
+                  className={inputClass}
+                  required
+                />
+              </div>
+              {lang === "ja" && (
+                <div className="w-full">
+                  <p className="text-xs mb-1 opacity-70 text-center">{labels.nameFuriganaLabel}</p>
+                  <input
+                    type="text"
+                    value={nameFurigana}
+                    onChange={(e) => setNameFurigana(e.target.value)}
+                    placeholder={labels.nameFuriganaPlaceholder}
+                    className={inputClass}
+                    required
+                  />
+                </div>
+              )}
             </div>
             {errors.name && (
               <p className="text-xs text-center mt-2" style={{ color: "#c44" }}>{errors.name}</p>
@@ -258,20 +295,40 @@ export default function RsvpForm({ labels }: RsvpFormProps) {
               {labels.coAttendeesLabel}
             </div>
             <p className="text-[11px] text-center opacity-60 mb-3">{labels.coAttendeesNote}</p>
-            <div className="px-6 space-y-2">
+            <div className={`px-6 space-y-2 ${lang === "ja" ? "space-y-4" : ""}`}>
               {coAttendees.map((val, i) => (
-                <input
-                  key={i}
-                  type="text"
-                  value={val}
-                  onChange={(e) => {
-                    const next = [...coAttendees];
-                    next[i] = e.target.value;
-                    setCoAttendees(next);
-                  }}
-                  placeholder={labels.coAttendeePlaceholder}
-                  className={inputClass}
-                />
+                <div key={i} className={lang === "ja" ? "grid grid-cols-2 gap-4" : ""}>
+                  <div className="w-full">
+                    {lang === "ja" && i === 0 && <p className="text-xs mb-1 opacity-70 text-center">{labels.nameLabel}</p>}
+                    <input
+                      type="text"
+                      value={val}
+                      onChange={(e) => {
+                        const next = [...coAttendees];
+                        next[i] = e.target.value;
+                        setCoAttendees(next);
+                      }}
+                      placeholder={labels.coAttendeePlaceholder}
+                      className={inputClass}
+                    />
+                  </div>
+                  {lang === "ja" && (
+                    <div className="w-full">
+                      {i === 0 && <p className="text-xs mb-1 opacity-70 text-center">{labels.nameFuriganaLabel}</p>}
+                      <input
+                        type="text"
+                        value={coAttendeesFurigana[i]}
+                        onChange={(e) => {
+                          const next = [...coAttendeesFurigana];
+                          next[i] = e.target.value;
+                          setCoAttendeesFurigana(next);
+                        }}
+                        placeholder={labels.coAttendeeFuriganaPlaceholder}
+                        className={inputClass}
+                      />
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
           </div>
@@ -397,25 +454,6 @@ export default function RsvpForm({ labels }: RsvpFormProps) {
             </div>
           </div>
 
-          {/* ── Conditional: Guest count ── */}
-          {attending && (
-            <div className={fieldCard}>
-              <div className={fieldLabel}>
-                {labels.guestCountLabel}
-              </div>
-              <div className="px-6">
-                <input
-                  type="number"
-                  min={1}
-                  max={10}
-                  value={guestCount}
-                  onChange={(e) => setGuestCount(parseInt(e.target.value) || 1)}
-                  className={inputClass + " text-center max-w-[120px] mx-auto block"}
-                />
-              </div>
-            </div>
-          )}
-
           {/* ── Dietary ── */}
           <div className={fieldCard}>
             <div className={fieldLabel}>
@@ -433,6 +471,49 @@ export default function RsvpForm({ labels }: RsvpFormProps) {
               />
             </div>
           </div>
+
+          {/* ── Taxi ── */}
+          {attending && (
+            <div className={fieldCard}>
+              <div className={fieldLabel}>
+                {labels.taxiLabel}
+              </div>
+              <p className="text-[11px] text-center opacity-60 mb-3 px-6 whitespace-pre-wrap">
+                {labels.taxiNote}
+              </p>
+              <div className="flex justify-center gap-6 px-6">
+                {[
+                  { id: "not_needed", label: labels.taxiNotNeeded },
+                  { id: "one_way", label: labels.taxiOneWay },
+                  { id: "round_trip", label: labels.taxiRoundTrip },
+                ].map((option) => (
+                  <label key={option.id} className="flex items-center gap-2 cursor-pointer group">
+                    <span
+                      className="w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors shrink-0"
+                      style={{
+                        borderColor: taxi === option.id ? "var(--color-gold)" : "var(--color-gold-light)",
+                      }}
+                    >
+                      {taxi === option.id && (
+                        <span
+                          className="w-2.5 h-2.5 rounded-full"
+                          style={{ backgroundColor: "var(--color-gold)" }}
+                        />
+                      )}
+                    </span>
+                    <input
+                      type="radio"
+                      name="taxi"
+                      className="sr-only"
+                      checked={taxi === option.id}
+                      onChange={() => setTaxi(option.id)}
+                    />
+                    <span className="text-sm">{option.label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* ── Message ── */}
           <div className={fieldCard + " border-b-0"}>

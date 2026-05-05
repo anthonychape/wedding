@@ -13,9 +13,12 @@ const rsvpLabels = {
   rsvpDeadline: t(lang, "rsvpDeadline"),
   nameLabel: t(lang, "nameLabel"),
   namePlaceholder: t(lang, "namePlaceholder"),
+  nameFuriganaLabel: t(lang, "nameFuriganaLabel"),
+  nameFuriganaPlaceholder: t(lang, "nameFuriganaPlaceholder"),
   coAttendeesLabel: t(lang, "coAttendeesLabel"),
   coAttendeesNote: t(lang, "coAttendeesNote"),
   coAttendeePlaceholder: t(lang, "coAttendeePlaceholder"),
+  coAttendeeFuriganaPlaceholder: t(lang, "coAttendeeFuriganaPlaceholder"),
   guestSideLabel: t(lang, "guestSideLabel"),
   groomGuest: t(lang, "groomGuest"),
   brideGuest: t(lang, "brideGuest"),
@@ -34,6 +37,11 @@ const rsvpLabels = {
   dietaryLabel: t(lang, "dietaryLabel"),
   dietaryNote: t(lang, "dietaryNote"),
   dietaryPlaceholder: t(lang, "dietaryPlaceholder"),
+  taxiLabel: t(lang, "taxiLabel"),
+  taxiNote: t(lang, "taxiNote"),
+  taxiNotNeeded: t(lang, "taxiNotNeeded"),
+  taxiOneWay: t(lang, "taxiOneWay"),
+  taxiRoundTrip: t(lang, "taxiRoundTrip"),
   messageLabel: t(lang, "messageLabel"),
   messagePlaceholder: t(lang, "messagePlaceholder"),
   submit: t(lang, "submit"),
@@ -71,7 +79,7 @@ const rsvpLabels = {
     </p>
   </div>
     
-    <RsvpForm client:visible labels={rsvpLabels} />
+    <RsvpForm client:visible lang={lang} labels={rsvpLabels} />
     <div class="mx-auto flex justify-center">
       <a href="/fr" class="flex flex-row items-center text-charcoal/70 hover:text-gold transition-colors">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
