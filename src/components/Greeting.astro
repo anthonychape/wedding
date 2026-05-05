@@ -20,12 +20,19 @@ const lines = t(lang, "greetingBody").split("\n");
     </h2>
     <div class="space-y-0 leading-[2.2] text-base md:text-lg text-[#231815]">
       {lines.map((line) => (
-        line.trim() === "" ? <br /> : <p>{line}</p>
+        line.trim() === "" ? "" : <p>{line}</p>
       ))}
       <div class="text-right mt-6 mb-8 text-sm md:text-base">
-        <p>{t(lang, "greetingDate")}</p>
+        <p class="mb-4">{t(lang, "greetingDate")}</p>
+        {lang === "ja" ? (
+          <div class="space-y-1">
+            <p>シャプ　アントニー</p>
+            <p>シャプ　夏生　(旧姓 宮木)</p>
+          </div>
+        ) : (
+          <span style="font-family: var(--font-serif-latin);">Anthony <span class="text-gold">&</span> Natsuki</span>
+        )}
       </div>
-      <span style="font-family: var(--font-serif-latin);">Anthony <span class="text-gold">&</span> Natsuki</span>
     </div>
   </div>
 </section>
