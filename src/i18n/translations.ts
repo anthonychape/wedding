@@ -26,7 +26,7 @@ export const translations = {
 
     // Greeting
     greetingTitle: "ご挨拶",
-    greetingDate: "令和8年8月吉日",
+    greetingDate: "2026年8月吉日",
     greetingBody: `皆様にはお健やかにお過ごしのことと
 お慶び申し上げます
 
@@ -49,12 +49,14 @@ export const translations = {
 
     // Event
     eventTitle: "スケジュール",
+    date: "2026年10月24日",
     receptionDesk: "受付",
     ceremony: "挙式",
     party: "パーティー",
-    receptionDeskTime: "16:00〜",
+    receptionDeskTime: "16:15〜",
     ceremonyTime: "17:00〜",
     partyTime: "18:00〜",
+    eventNote: "(当日は挙式の15分前までにお越しください)",
     venue: "レ アール ド セゾン・セージ",
     venueAddress: "〒390-0835 長野県松本市高宮東1-28",
     dressCode: "ドレスコード：セミフォーマル",
@@ -167,6 +169,7 @@ With love,`,
     receptionDeskTime: "4:00 PM–",
     ceremonyTime: "5:00 PM–",
     partyTime: "6:00 PM–",
+    eventNote: "(Please arrive at least 15 minutes before the ceremony)",
     venue: "Les Halles de Saison Sage",
     venueAddress: "1-28 Takamiyahigashi, Matsumoto, Nagano 390-0835",
     dressCode: "Dress code: Semi-formal",
@@ -273,6 +276,7 @@ Avec tout notre amour,`,
     receptionDeskTime: "16h00–",
     ceremonyTime: "17h00–",
     partyTime: "18h00–",
+    eventNote: "(Merci d'arriver au moins 15 minutes avant le début de la cérémonie)",
     venue: "Les Halles de Saison Sage",
     venueAddress: "1-28 Takamiyahigashi, Matsumoto, Nagano 390-0835",
     dressCode: "Code vestimentaire : Semi-formel",

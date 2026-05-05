@@ -12,11 +12,12 @@ const { lang } = Astro.props;
 <section id="event">
   <div class="max-w-4xl mx-auto">
     <h2
-      class="scroll-reveal text-xl md:text-2xl tracking-[0.2em] font-bold uppercase text-gold mb-8 text-center"
+      class="scroll-reveal text-xl md:text-2xl tracking-[0.2em] font-bold uppercase text-gold text-center mb-6"
       style="font-family: var(--font-serif-latin);"
     >
       {t(lang, "eventTitle")}
     </h2>
+    <p class="text-center font-bold text-lg mb-8"><span class="mr-6">日時</span>{t(lang, "date")}</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
       <!-- Reception Desk -->
       <div class="scroll-reveal-delay-1 bg-white rounded-sm p-8 text-center border border-[var(--color-gold-light)]">
@@ -28,12 +29,11 @@ const { lang } = Astro.props;
             <path d="M10 2h4" />
           </svg>
         </div>
-        <h3 class="text-lg font-bold mb-4 text-charcoal" style="font-family: var(--font-serif-latin);">
+        <h3 class="text-lg font-bold mb-2 text-charcoal" style="font-family: var(--font-serif-latin);">
           {t(lang, "receptionDesk")}
         </h3>
         <div class="space-y-2 text-sm text-charcoal">
-          <p>{t(lang, "date")}</p>
-          <p class="font-bold text-gold">{t(lang, "receptionDeskTime")}</p>
+          <p class="font-bold text-charcoal text-lg">{t(lang, "receptionDeskTime")}</p>
         </div>
       </div>
       <!-- Ceremony -->
@@ -46,12 +46,11 @@ const { lang } = Astro.props;
             <path d="M10 22v-4a2 2 0 0 1 4 0v4" />
           </svg>
         </div>
-        <h3 class="text-lg font-bold mb-4 text-charcoal" style="font-family: var(--font-serif-latin);">
+        <h3 class="text-lg font-bold mb-2 text-charcoal" style="font-family: var(--font-serif-latin);">
           {t(lang, "ceremony")}
         </h3>
         <div class="space-y-2 text-sm text-charcoal">
-          <p>{t(lang, "date")}</p>
-          <p class="font-bold text-gold">{t(lang, "ceremonyTime")}</p>
+          <p class="font-bold text-charcoal text-lg">{t(lang, "ceremonyTime")}</p>
         </div>
       </div>
       <!-- Party -->
@@ -63,15 +62,15 @@ const { lang } = Astro.props;
             <path d="m19 3-7 8-7-8Z" />
           </svg>
         </div>
-        <h3 class="text-lg font-bold mb-4 text-charcoal" style="font-family: var(--font-serif-latin);">
+        <h3 class="text-lg font-bold mb-2 text-charcoal" style="font-family: var(--font-serif-latin);">
           {t(lang, "party")}
         </h3>
         <div class="space-y-2 text-sm text-charcoal">
-          <p>{t(lang, "date")}</p>
-          <p class="font-bold text-gold">{t(lang, "partyTime")}</p>
+          <p class="font-bold text-charcoal text-lg">{t(lang, "partyTime")}</p>
         </div>
       </div>
     </div>
+    <p class="text-center text-charcoal mt-8">{t(lang, "eventNote")}</p>
     <!-- Venue info -->
     <div class="scroll-reveal mt-12 text-center space-y-3">
       <div class="flex justify-center mb-2 text-gold">
@@ -82,7 +81,6 @@ const { lang } = Astro.props;
       </div>
       <p class="text-lg font-bold">{t(lang, "venue")}</p>
       <p class="text-sm text-charcoal">{t(lang, "venueAddress")}</p>
-      <p class="text-sm text-gold">{t(lang, "dressCode")}</p>
     </div>
   </div>
 </section>
