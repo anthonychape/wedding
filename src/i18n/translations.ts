@@ -22,6 +22,7 @@ export const translations = {
     weddingDate: "2026年10月24日（土）",
     weddingDateShort: "2026年10月24日（土）",
     scrollDown: "Scroll",
+    metaDescription: "アンソニーと夏希の結婚式のご案内です。2026年10月24日に開催される結婚式の詳細や出欠のご返信はこちらからお願いいたします。",
 
     // Greeting
     greetingTitle: "ご挨拶",
@@ -134,6 +135,7 @@ export const translations = {
     weddingDate: "Saturday, October 24, 2026",
     weddingDateShort: "2026.10.24 SAT",
     scrollDown: "Scroll",
+    metaDescription: "You are invited to the wedding of Anthony and Natsuki on October 24, 2026. Find all the event details, venue access information, and RSVP here.",
 
     greetingTitle: "Greeting",
     greetingBody: `Dear family and friends,
@@ -238,6 +240,7 @@ With love,`,
     weddingDate: "Samedi 24 octobre 2026",
     weddingDateShort: "2026.10.24 SAM",
     scrollDown: "Défiler",
+    metaDescription: "Vous êtes invités au mariage d'Anthony et Natsuki le 24 octobre 2026. Retrouvez tous les détails de l'événement, les informations d'accès et le formulaire RSVP ici.",
 
     greetingTitle: "Salutations",
     greetingBody: `Chers famille et amis,
