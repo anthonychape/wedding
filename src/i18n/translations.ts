@@ -139,14 +139,18 @@ export const translations = {
 
     greetingTitle: "Greeting",
     greetingDate: "August 2026",
-    greetingBody: `We hope this message finds you in good health and happiness.
+    greetingBody: `Dear family and friends,
 
 We are delighted to announce that we are getting married!
-With profound gratitude to everyone who has supported us,
-we would like to host a reception for you.
 
-We understand you may be busy, but we would be truly honored
-if you could join us for this special occasion.`,
+We would be truly honored to have you join us
+on our special day as we celebrate
+the beginning of our new journey together.
+
+We sincerely hope you can attend
+and share this joyful occasion with us.
+
+With love,`,
 
     profileTitle: "Profile",
     groomName: "Anthony",
@@ -241,14 +245,18 @@ if you could join us for this special occasion.`,
 
     greetingTitle: "Salutations",
     greetingDate: "Août 2026",
-    greetingBody: `Nous espérons que ce message vous trouve en bonne santé et heureux.
+    greetingBody: `Chers famille et amis,
 
-Nous avons l'immense joie de vous annoncer notre mariage !
-Avec une profonde gratitude envers tous ceux qui nous ont soutenus,
-nous aimerions vous convier à une chaleureuse réception.
+Nous avons le plaisir de vous annoncer notre mariage !
 
-Nous savons votre temps précieux, mais serions très honorés
-de votre présence pour célébrer avec nous cette occasion spéciale.`,
+Nous serions très honorés de votre présence
+pour célébrer avec nous
+le début de notre nouvelle vie ensemble.
+
+Nous espérons sincèrement que vous pourrez
+vous joindre à nous pour cette joyeuse occasion.
+
+Avec tout notre amour,`,
 
     profileTitle: "Profil",
     groomName: "Anthony",
