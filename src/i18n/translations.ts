@@ -22,7 +22,7 @@ export const translations = {
     weddingDate: "2026年10月24日（土）",
     weddingDateShort: "2026年10月24日（土）",
     scrollDown: "Scroll",
-    metaDescription: "アンソニーと夏希の結婚式のご案内です。",
+    metaDescription: "アントニーと夏生の結婚式のご案内です。",
 
     // Greeting
     greetingTitle: "ご挨拶",
@@ -44,7 +44,7 @@ export const translations = {
     groomNameJp: "アントニー",
     groomBio: "東京都在住。エンジニアとして働いています。趣味は料理と旅行。",
     brideName: "Natsuki",
-    brideNameJp: "なつき",
+    brideNameJp: "夏生",
     brideBio: "東京都在住。デザイナーとして働いています。趣味は写真と読書。",
 
     // Event
@@ -167,7 +167,7 @@ With love,`,
     groomNameJp: "アントニー",
     groomBio: "Based in Tokyo. Works as an engineer. Enjoys cooking and traveling.",
     brideName: "Natsuki",
-    brideNameJp: "なつき",
+    brideNameJp: "夏生",
     brideBio: "Based in Tokyo. Works as a designer. Enjoys photography and reading.",
 
     eventTitle: "Schedule",
@@ -283,7 +283,7 @@ Avec tout notre amour,`,
     groomNameJp: "アントニー",
     groomBio: "Basé à Tokyo. Ingénieur. Passionné de cuisine et de voyages.",
     brideName: "Natsuki",
-    brideNameJp: "なつき",
+    brideNameJp: "夏生",
     brideBio: "Basée à Tokyo. Designer. Passionnée de photographie et de lecture.",
 
     eventTitle: "Programme",
