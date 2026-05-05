@@ -17,7 +17,7 @@ const { lang } = Astro.props;
     >
       {t(lang, "eventTitle")}
     </h2>
-    <p class="text-center font-bold text-lg mb-8"><span class="mr-6">日時</span>{t(lang, "date")}</p>
+    <p class="text-center font-bold text-lg mb-8"><span class="mr-6">{t(lang, "dateLabel")}</span>{t(lang, "date")}</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
       <!-- Reception Desk -->
       <div class="scroll-reveal-delay-1 bg-white rounded-sm p-8 text-center border border-[var(--color-gold-light)]">

@@ -49,6 +49,7 @@ export const translations = {
 
     // Event
     eventTitle: "スケジュール",
+    dateLabel: "日時",
     date: "2026年10月24日",
     receptionDesk: "受付",
     ceremony: "挙式",
@@ -163,6 +164,7 @@ With love,`,
     brideBio: "Based in Tokyo. Works as a designer. Enjoys photography and reading.",
 
     eventTitle: "Schedule",
+    dateLabel: "Date",
     receptionDesk: "Reception",
     ceremony: "Ceremony",
     party: "Party",
@@ -270,6 +272,7 @@ Avec tout notre amour,`,
     brideBio: "Basée à Tokyo. Designer. Passionnée de photographie et de lecture.",
 
     eventTitle: "Programme",
+    dateLabel: "Date",
     receptionDesk: "Accueil",
     ceremony: "Cérémonie",
     party: "Fête",
