@@ -51,28 +51,37 @@ h1, h2, h3 {
   }
 }
 
+.scroll-reveal,
+.scroll-reveal-delay-1,
+.scroll-reveal-delay-2,
+.scroll-reveal-delay-3 {
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-visible,
+.scroll-reveal-delay-1.is-visible,
+.scroll-reveal-delay-2.is-visible,
+.scroll-reveal-delay-3.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .scroll-reveal {
-  animation: reveal-up linear both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 100%;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .scroll-reveal-delay-1 {
-  animation: reveal-up linear both;
-  animation-timeline: view();
-  animation-range: entry 5% entry 100%;
+  transition: opacity 0.8s ease-out 0.15s, transform 0.8s ease-out 0.15s;
 }
 
 .scroll-reveal-delay-2 {
-  animation: reveal-up linear both;
-  animation-timeline: view();
-  animation-range: entry 10% entry 100%;
+  transition: opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s;
 }
 
 .scroll-reveal-delay-3 {
-  animation: reveal-up linear both;
-  animation-timeline: view();
-  animation-range: entry 15% entry 100%;
+  transition: opacity 0.8s ease-out 0.45s, transform 0.8s ease-out 0.45s;
 }
 
 /* ── Hero animations ── */
