@@ -26,17 +26,17 @@ export const translations = {
 
     // Greeting
     greetingTitle: "ご挨拶",
-    greetingBody: `謹啓　時下ますますご清祥のこととお慶び申し上げます
+    greetingDate: "令和8年8月吉日",
+    greetingBody: `皆様にはお健やかにお過ごしのことと
+お慶び申し上げます
 
-このたび 私たちは結婚式を挙げることとなりました
-つきましては 日頃お世話になっている皆様に
-感謝の気持ちを込めて
-ささやかな披露宴を催したく存じます
+このたび私達は結婚式を挙げることになりました
+つきましては皆様へ感謝の気持ちを込めて
+粗餐をお楽しみいただきながらの披露宴を
+催したいと思っております
 
-ご多用中 誠に恐縮ではございますが
-ぜひご出席賜りますよう お願い申し上げます
-
-謹白`,
+ご多用のところ誠に恐縮ではございますが
+ぜひご出席くださいますよう謹んでご案内申し上げます`,
 
     // Profile
     profileTitle: "Profile",
@@ -138,18 +138,15 @@ export const translations = {
     metaDescription: "You are invited to the wedding of Anthony and Natsuki.",
 
     greetingTitle: "Greeting",
-    greetingBody: `Dear family and friends,
+    greetingDate: "August 2026",
+    greetingBody: `We hope this message finds you in good health and happiness.
 
 We are delighted to announce that we are getting married!
+With profound gratitude to everyone who has supported us,
+we would like to host a reception for you.
 
-We would be truly honored to have you join us
-on our special day as we celebrate
-the beginning of our new journey together.
-
-We sincerely hope you can attend
-and share this joyful occasion with us.
-
-With love,`,
+We understand you may be busy, but we would be truly honored
+if you could join us for this special occasion.`,
 
     profileTitle: "Profile",
     groomName: "Anthony",
@@ -243,18 +240,15 @@ With love,`,
     metaDescription: "Invitation au mariage d'Anthony et Natsuki.",
 
     greetingTitle: "Salutations",
-    greetingBody: `Chers famille et amis,
+    greetingDate: "Août 2026",
+    greetingBody: `Nous espérons que ce message vous trouve en bonne santé et heureux.
 
-Nous avons le plaisir de vous annoncer notre mariage !
+Nous avons l'immense joie de vous annoncer notre mariage !
+Avec une profonde gratitude envers tous ceux qui nous ont soutenus,
+nous aimerions vous convier à une chaleureuse réception.
 
-Nous serions très honorés de votre présence
-pour célébrer avec nous
-le début de notre nouvelle vie ensemble.
-
-Nous espérons sincèrement que vous pourrez
-vous joindre à nous pour cette joyeuse occasion.
-
-Avec tout notre amour,`,
+Nous savons votre temps précieux, mais serions très honorés
+de votre présence pour célébrer avec nous cette occasion spéciale.`,
 
     profileTitle: "Profil",
     groomName: "Anthony",

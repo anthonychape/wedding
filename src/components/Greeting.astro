@@ -22,6 +22,9 @@ const lines = t(lang, "greetingBody").split("\n");
       {lines.map((line) => (
         line.trim() === "" ? <br /> : <p>{line}</p>
       ))}
+      <div class="text-right mt-6 mb-8 text-sm md:text-base">
+        <p>{t(lang, "greetingDate")}</p>
+      </div>
       <span style="font-family: var(--font-serif-latin);">Anthony <span class="text-gold">&</span> Natsuki</span>
     </div>
   </div>
