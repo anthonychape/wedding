@@ -1,0 +1,115 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Hero from "@/components/Hero.astro";
+import Greeting from "@/components/Greeting.astro";
+import Profile from "@/components/Profile.astro";
+import EventDetails from "@/components/EventDetails.astro";
+import AccessMap from "@/components/AccessMap.astro";
+import Gallery from "@/components/Gallery.astro";
+import Footer from "@/components/Footer.astro";
+import Divider from "@/components/Divider.astro";
+import LanguageSwitcher from "@/components/LanguageSwitcher.astro";
+import Countdown from "@/components/react/Countdown";
+import RsvpForm from "@/components/react/RsvpForm";
+import { t } from "@/i18n/translations";
+import type { Lang } from "@/i18n/translations";
+
+const lang: Lang = "en";
+
+const countdownLabels = {
+  days: t(lang, "days"),
+  hours: t(lang, "hours"),
+  minutes: t(lang, "minutes"),
+  seconds: t(lang, "seconds"),
+};
+
+const rsvpLabels = {
+  rsvpTitle: t(lang, "rsvpTitle"),
+  rsvpDeadline: t(lang, "rsvpDeadline"),
+  nameLabel: t(lang, "nameLabel"),
+  namePlaceholder: t(lang, "namePlaceholder"),
+  coAttendeesLabel: t(lang, "coAttendeesLabel"),
+  coAttendeesNote: t(lang, "coAttendeesNote"),
+  coAttendeePlaceholder: t(lang, "coAttendeePlaceholder"),
+  guestSideLabel: t(lang, "guestSideLabel"),
+  groomGuest: t(lang, "groomGuest"),
+  brideGuest: t(lang, "brideGuest"),
+  phoneLabel: t(lang, "phoneLabel"),
+  phonePlaceholder: t(lang, "phonePlaceholder"),
+  emailLabel: t(lang, "emailLabel"),
+  emailPlaceholder: t(lang, "emailPlaceholder"),
+  postalCodeLabel: t(lang, "postalCodeLabel"),
+  postalCodePlaceholder: t(lang, "postalCodePlaceholder"),
+  addressLabel: t(lang, "addressLabel"),
+  addressPlaceholder: t(lang, "addressPlaceholder"),
+  attendanceLabel: t(lang, "attendanceLabel"),
+  attending: t(lang, "attending"),
+  notAttending: t(lang, "notAttending"),
+  guestCountLabel: t(lang, "guestCountLabel"),
+  dietaryLabel: t(lang, "dietaryLabel"),
+  dietaryNote: t(lang, "dietaryNote"),
+  dietaryPlaceholder: t(lang, "dietaryPlaceholder"),
+  messageLabel: t(lang, "messageLabel"),
+  messagePlaceholder: t(lang, "messagePlaceholder"),
+  submit: t(lang, "submit"),
+  submitting: t(lang, "submitting"),
+  thankYouTitle: t(lang, "thankYouTitle"),
+  thankYouMessage: t(lang, "thankYouMessage"),
+  thankYouNotAttending: t(lang, "thankYouNotAttending"),
+  errorMessage: t(lang, "errorMessage"),
+  nameRequired: t(lang, "nameRequired"),
+  attendanceRequired: t(lang, "attendanceRequired"),
+  phoneRequired: t(lang, "phoneRequired"),
+  guestSideRequired: t(lang, "guestSideRequired"),
+};
+---
+
+<Layout lang={lang}>
+  <LanguageSwitcher lang={lang} />
+  <main>
+    <Hero lang={lang} />
+    <Greeting lang={lang} />
+    <Divider />
+    <Profile lang={lang} />
+    <Divider />
+    <EventDetails lang={lang} />
+    <Divider />
+    <AccessMap lang={lang} />
+    <Divider />
+    <Gallery lang={lang} />
+    <Divider />
+    <Countdown
+      client:visible
+      targetDate="2026-10-24T14:00:00+09:00"
+      labels={countdownLabels}
+      title={t(lang, "countdownTitle")}
+    />
+    <Divider />
+    
+    <section class="py-16 md:py-24 px-6 text-center">
+      <div class="scroll-reveal">
+        <p class="text-charcoal leading-loose mb-2">
+          Please kindly RSVP
+        </p>
+        <p class="text-charcoal leading-loose mb-10 font-bold">
+          by September 19th
+        </p>
+        <a 
+          href="/en/rsvp" 
+          class="inline-block bg-[var(--color-gold)] text-white px-10 py-4 rounded-full shadow-md hover:shadow-lg hover:bg-[var(--color-gold)]/90 transition-all font-bold"
+           style={{
+                fontFamily: "var(--font-serif-latin)",
+                background: "linear-gradient(135deg, #efd59e 0%, #e29886 100%)",
+                color: "#FFFFFF",
+                border: "1px solid #fff",
+              }}
+        >
+          RSVP Here
+        </a>
+      </div>
+    </section>
+
+    <Divider />
+    <Footer lang={lang} />
+  </main>
+</Layout>

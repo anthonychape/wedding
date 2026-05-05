@@ -1,0 +1,43 @@
+---
+import type { Lang } from "@/i18n/translations";
+import { languages } from "@/i18n/translations";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const pathname = Astro.url.pathname;
+
+const segments = pathname.split('/').filter(Boolean);
+if (segments[0] === 'en' || segments[0] === 'fr' || segments[0] === 'ja') {
+  segments.shift();
+}
+const pathWithoutLang = segments.join('/');
+
+const getHref = (code: string) => {
+  if (code === "ja") {
+    return pathWithoutLang ? `/${pathWithoutLang}` : "/";
+  }
+  return pathWithoutLang ? `/${code}/${pathWithoutLang}` : `/${code}/`;
+};
+---
+
+<div class="fixed top-4 right-4 z-50">
+  <div class="flex gap-0.5 bg-ivory/80 backdrop-blur-sm rounded-full py-1.5 px-2 border border-gold-light/30 shadow-sm">
+    {Object.entries(languages).map(([code, label]) => (
+      <a
+        href={getHref(code)}
+        class:list={[
+          "text-xs tracking-wide px-3 py-1 rounded-full transition-colors",
+          code === lang
+            ? "bg-gold text-ivory"
+            : "text-charcoal hover:text-charcoal",
+        ]}
+        style="font-family: var(--font-serif-latin);"
+      >
+        {code.toUpperCase()}
+      </a>
+    ))}
+  </div>
+</div>

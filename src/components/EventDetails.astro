@@ -1,0 +1,88 @@
+---
+import type { Lang } from "@/i18n/translations";
+import { t } from "@/i18n/translations";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<section id="event">
+  <div class="max-w-4xl mx-auto">
+    <h2
+      class="scroll-reveal text-xl md:text-2xl tracking-[0.2em] font-bold uppercase text-gold mb-8 text-center"
+      style="font-family: var(--font-serif-latin);"
+    >
+      {t(lang, "eventTitle")}
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      <!-- Reception Desk -->
+      <div class="scroll-reveal-delay-1 bg-white rounded-sm p-8 text-center border border-[var(--color-gold-light)]">
+        <div class="flex justify-center mb-4 text-gold">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 20h18" />
+            <path d="M2 16l1.9-4.3A8 8 0 0 1 11.2 5.1L12 5l.8.1a8 8 0 0 1 7.3 6.6L22 16" />
+            <path d="M12 2v3" />
+            <path d="M10 2h4" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold mb-4 text-charcoal" style="font-family: var(--font-serif-latin);">
+          {t(lang, "receptionDesk")}
+        </h3>
+        <div class="space-y-2 text-sm text-charcoal">
+          <p>{t(lang, "date")}</p>
+          <p class="font-bold text-gold">{t(lang, "receptionDeskTime")}</p>
+        </div>
+      </div>
+      <!-- Ceremony -->
+      <div class="scroll-reveal-delay-2 bg-white rounded-sm p-8 text-center border border-[var(--color-gold-light)]">
+        <div class="flex justify-center mb-4 text-gold">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 2-8 8v12h16V10Z" />
+            <path d="M12 2v8" />
+            <path d="M9 6h6" />
+            <path d="M10 22v-4a2 2 0 0 1 4 0v4" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold mb-4 text-charcoal" style="font-family: var(--font-serif-latin);">
+          {t(lang, "ceremony")}
+        </h3>
+        <div class="space-y-2 text-sm text-charcoal">
+          <p>{t(lang, "date")}</p>
+          <p class="font-bold text-gold">{t(lang, "ceremonyTime")}</p>
+        </div>
+      </div>
+      <!-- Party -->
+      <div class="scroll-reveal-delay-3 bg-white rounded-sm p-8 text-center border border-[var(--color-gold-light)]">
+        <div class="flex justify-center mb-4 text-gold">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 22h8" />
+            <path d="M12 11v11" />
+            <path d="m19 3-7 8-7-8Z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold mb-4 text-charcoal" style="font-family: var(--font-serif-latin);">
+          {t(lang, "party")}
+        </h3>
+        <div class="space-y-2 text-sm text-charcoal">
+          <p>{t(lang, "date")}</p>
+          <p class="font-bold text-gold">{t(lang, "partyTime")}</p>
+        </div>
+      </div>
+    </div>
+    <!-- Venue info -->
+    <div class="scroll-reveal mt-12 text-center space-y-3">
+      <div class="flex justify-center mb-2 text-gold">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+      </div>
+      <p class="text-lg font-bold">{t(lang, "venue")}</p>
+      <p class="text-sm text-charcoal">{t(lang, "venueAddress")}</p>
+      <p class="text-sm text-gold">{t(lang, "dressCode")}</p>
+    </div>
+  </div>
+</section>

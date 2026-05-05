@@ -1,0 +1,79 @@
+---
+import { Image } from "astro:assets";
+import type { Lang } from "@/i18n/translations";
+import { t } from "@/i18n/translations";
+
+import gallery1 from "@/assets/images/gallery-1.jpg";
+import gallery2 from "@/assets/images/gallery-2.jpg";
+import gallery3 from "@/assets/images/gallery-3.jpg";
+import gallery4 from "@/assets/images/gallery-4.jpg";
+import gallery5 from "@/assets/images/gallery-5.jpg";
+import gallery6 from "@/assets/images/gallery-6.jpg";
+
+import Lightbox from "@/components/react/Lightbox";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const images = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6];
+const imageUrls = images.map((img) => img.src);
+
+const delayClasses = [
+  "scroll-reveal",
+  "scroll-reveal-delay-1",
+  "scroll-reveal-delay-2",
+  "scroll-reveal-delay-3",
+  "scroll-reveal",
+  "scroll-reveal-delay-1",
+];
+---
+
+<section id="gallery">
+  <div class="max-w-4xl mx-auto">
+    <h2
+      class="scroll-reveal text-xl md:text-2xl tracking-[0.2em] font-bold uppercase text-gold mb-8 text-center"
+      style="font-family: var(--font-serif-latin);"
+    >
+      {t(lang, "galleryTitle")}
+    </h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+      {images.map((img, i) => (
+        <div class={delayClasses[i]}>
+          <button
+            class="relative block w-full h-full p-0 m-0 border-none bg-transparent overflow-hidden rounded-sm group cursor-pointer appearance-none text-left"
+            data-lightbox-index={i}
+            aria-label={`Open gallery photo ${i + 1}`}
+          >
+            <Image
+              src={img}
+              alt={`Gallery photo ${i + 1}`}
+              class:list={[
+                "w-full h-full object-cover aspect-square transition-transform duration-500 group-hover:scale-105 pointer-events-none",
+                i === images.length - 1 ? "object-center" : i === 1 ? "object-bottom" : "object-center"
+              ]}
+              quality="high"
+              width={800}
+            />
+          </button>
+        </div>
+      ))}
+    </div>
+    <Lightbox client:load images={imageUrls} />
+  </div>
+</section>
+
+<script>
+  // Add listener on astro:page-load to support View Transitions
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll("button[data-lightbox-index]").forEach((el) => {
+      el.addEventListener("click", (e) => {
+        e.preventDefault(); // Prevents default button behavior if any
+        const index = parseInt(el.getAttribute("data-lightbox-index") || "0");
+        window.dispatchEvent(new CustomEvent("open-lightbox", { detail: index }));
+      });
+    });
+  });
+</script>

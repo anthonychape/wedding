@@ -1,0 +1,84 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import RsvpForm from "@/components/react/RsvpForm";
+import LanguageSwitcher from "@/components/LanguageSwitcher.astro";
+import Divider from "@/components/Divider.astro";
+import { t } from "@/i18n/translations";
+import type { Lang } from "@/i18n/translations";
+
+const lang: Lang = "ja";
+
+const rsvpLabels = {
+  rsvpTitle: t(lang, "rsvpTitle"),
+  rsvpDeadline: t(lang, "rsvpDeadline"),
+  nameLabel: t(lang, "nameLabel"),
+  namePlaceholder: t(lang, "namePlaceholder"),
+  coAttendeesLabel: t(lang, "coAttendeesLabel"),
+  coAttendeesNote: t(lang, "coAttendeesNote"),
+  coAttendeePlaceholder: t(lang, "coAttendeePlaceholder"),
+  guestSideLabel: t(lang, "guestSideLabel"),
+  groomGuest: t(lang, "groomGuest"),
+  brideGuest: t(lang, "brideGuest"),
+  phoneLabel: t(lang, "phoneLabel"),
+  phonePlaceholder: t(lang, "phonePlaceholder"),
+  emailLabel: t(lang, "emailLabel"),
+  emailPlaceholder: t(lang, "emailPlaceholder"),
+  postalCodeLabel: t(lang, "postalCodeLabel"),
+  postalCodePlaceholder: t(lang, "postalCodePlaceholder"),
+  addressLabel: t(lang, "addressLabel"),
+  addressPlaceholder: t(lang, "addressPlaceholder"),
+  attendanceLabel: t(lang, "attendanceLabel"),
+  attending: t(lang, "attending"),
+  notAttending: t(lang, "notAttending"),
+  guestCountLabel: t(lang, "guestCountLabel"),
+  dietaryLabel: t(lang, "dietaryLabel"),
+  dietaryNote: t(lang, "dietaryNote"),
+  dietaryPlaceholder: t(lang, "dietaryPlaceholder"),
+  messageLabel: t(lang, "messageLabel"),
+  messagePlaceholder: t(lang, "messagePlaceholder"),
+  submit: t(lang, "submit"),
+  submitting: t(lang, "submitting"),
+  thankYouTitle: t(lang, "thankYouTitle"),
+  thankYouMessage: t(lang, "thankYouMessage"),
+  thankYouNotAttending: t(lang, "thankYouNotAttending"),
+  errorMessage: t(lang, "errorMessage"),
+  nameRequired: t(lang, "nameRequired"),
+  attendanceRequired: t(lang, "attendanceRequired"),
+  phoneRequired: t(lang, "phoneRequired"),
+  guestSideRequired: t(lang, "guestSideRequired"),
+  requiredLabel: t(lang, "requiredLabel"),
+};
+---
+
+<Layout lang={lang} title={`${t(lang, "rsvpTitle")} — Natsuki & Anthony`}>
+  <LanguageSwitcher lang={lang} />
+  <div class="min-h-screen pt-12 pb-12">
+    <div class="hero-animate relative z-20 text-center px-4 w-full text-white">
+    <div class="mb-8 flex justify-center opacity-90">
+      <p class="writing-text text-5xl md:text-7xl text-gold" style="font-family: var(--font-calligraphy);">
+        Wedding Invitation
+      </p>
+    </div>
+    <Divider />
+    <h1
+      class="text-2xl md:text-4xl font-light mb-3 text-charcoal"
+      style="font-family: var(--font-serif-latin);"
+    >
+      Anthony <span class="mx-2 text-3xl font-extralight lowercase text-gold">&</span> Natsuki
+    </h1>
+    <p class="text-xs md:text-sm tracking-[0.3em] text-charcoal uppercase" style="font-family: var(--font-serif-latin);">
+      {t(lang, "weddingDateShort")}
+    </p>
+  </div>
+    
+    <RsvpForm client:visible labels={rsvpLabels} />
+    <div class="mx-auto flex justify-center">
+      <a href="/" class="flex flex-row items-center text-charcoal/70 hover:text-gold transition-colors">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        <span class="text-sm uppercase tracking-widest">Back</span>
+      </a>
+    </div>
+  </div>
+</Layout>

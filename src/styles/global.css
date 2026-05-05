@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #FFFFFF;
+  --color-charcoal: #231815;
+  --color-gold: #e29886;
+  --color-sage: #e29886;
+  --color-gold-light: #f5d8d1;
+  --color-sage-light: #C8D5C2;
+
+  --font-serif-jp: "Noto Serif JP", serif;
+  --font-serif-latin: "Playfair Display", serif;
+  --font-calligraphy: "Pinyon Script", cursive;
+}
+
+/* ── Base ── */
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-serif-jp);
+  background-color: #fff2ef;
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Latin text override */
+[lang="en"] body,
+[lang="fr"] body {
+  font-family: var(--font-serif-latin);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif-latin);
+}
+
+/* ── Scroll-driven reveal animation ── */
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal {
+  animation: reveal-up linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 100%;
+}
+
+.scroll-reveal-delay-1 {
+  animation: reveal-up linear both;
+  animation-timeline: view();
+  animation-range: entry 5% entry 100%;
+}
+
+.scroll-reveal-delay-2 {
+  animation: reveal-up linear both;
+  animation-timeline: view();
+  animation-range: entry 10% entry 100%;
+}
+
+.scroll-reveal-delay-3 {
+  animation: reveal-up linear both;
+  animation-timeline: view();
+  animation-range: entry 15% entry 100%;
+}
+
+/* ── Hero animations ── */
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce-arrow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.hero-animate {
+  animation: hero-fade-in 1.5s ease-out both;
+}
+
+.bounce-arrow {
+  animation: bounce-arrow 2s ease-in-out infinite;
+}
+
+/* ── Thank you animation ── */
+
+@keyframes thank-you {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.thank-you-animate {
+  animation: thank-you 0.6s ease-out both;
+}
+
+/* ── Divider ── */
+
+.divider-flourish {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.divider-flourish svg {
+  width: 120px;
+  height: auto;
+  color: var(--color-gold);
+}
+
+.divider-flourish-white {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divider-flourish-white svg {
+  width: 140px;
+  height: auto;
+  color: var(--color-ivory);
+}
+
+/* ── Section spacing ── */
+
+section {
+  padding: 4rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  section {
+    padding: 4rem 2rem;
+  }
+}
+
+/* ── Form focus rings ── */
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
