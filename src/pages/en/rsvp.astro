@@ -65,10 +65,11 @@ const rsvpLabels = {
   <div class="min-h-screen pb-12">
     <div class="pt-12 relative z-20 text-center px-4 w-full text-white bg-black">
       <div class="absolute inset-0 h-full w-full overflow-hidden">
-        <Image src={heroImage1} alt="" class="absolute inset-0 h-full w-full object-cover opacity-70 blur-xl scale-105 transition-opacity duration-1000" quality="low" width={40} />
-        <Image src={heroImage1} alt="" class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" quality="high" width={1920} sizes="100vw" onload="this.style.opacity='0.7'; this.previousElementSibling.style.opacity='0'" />
+        <Image src={heroImage1} alt="" class="absolute inset-0 h-full w-full object-cover opacity-100 blur-xl scale-105 transition-opacity duration-1000" quality="low" width={40} />
+        <Image src={heroImage1} alt="" class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" quality="high" width={1920} sizes="100vw" onload="this.style.opacity='1'; this.previousElementSibling.style.opacity='0'" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent"></div>
       </div>
-    <div class="hero-animate">
+    <div class="hero-animate z-21">
     <div class="mt-48 mb-8 flex justify-center">
       <p class="writing-text text-5xl md:text-7xl text-white" style="font-family: var(--font-calligraphy);">
         Wedding Invitation
